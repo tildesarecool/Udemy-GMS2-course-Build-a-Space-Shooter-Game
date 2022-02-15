@@ -1,5 +1,20 @@
 {
   "resources": [
+    {"id":{"name":"sBullet","path":"sprites/sBullet/sBullet.yy",},"order":2,},
+    {"id":{"name":"soundMenuMusic","path":"sounds/soundMenuMusic/soundMenuMusic.yy",},"order":2,},
+    {"id":{"name":"soundBossMusic","path":"sounds/soundBossMusic/soundBossMusic.yy",},"order":1,},
+    {"id":{"name":"soundEnemyBullet","path":"sounds/soundEnemyBullet/soundEnemyBullet.yy",},"order":3,},
+    {"id":{"name":"soundPlayerBullet","path":"sounds/soundPlayerBullet/soundPlayerBullet.yy",},"order":6,},
+    {"id":{"name":"soundSlowMotion","path":"sounds/soundSlowMotion/soundSlowMotion.yy",},"order":7,},
+    {"id":{"name":"soundExplosion","path":"sounds/soundExplosion/soundExplosion.yy",},"order":4,},
+    {"id":{"name":"sBackground","path":"sprites/sBackground/sBackground.yy",},"order":0,},
+    {"id":{"name":"sChaser","path":"sprites/sChaser/sChaser.yy",},"order":3,},
+    {"id":{"name":"soundHit","path":"sounds/soundHit/soundHit.yy",},"order":5,},
+    {"id":{"name":"sBoss","path":"sprites/sBoss/sBoss.yy",},"order":1,},
+    {"id":{"name":"soundSpeedUp","path":"sounds/soundSpeedUp/soundSpeedUp.yy",},"order":8,},
+    {"id":{"name":"soundBackgroundMusic","path":"sounds/soundBackgroundMusic/soundBackgroundMusic.yy",},"order":0,},
+    {"id":{"name":"sJet","path":"sprites/sJet/sJet.yy",},"order":4,},
+    {"id":{"name":"sPlayer","path":"sprites/sPlayer/sPlayer.yy",},"order":5,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
   ],
   "Options": [
