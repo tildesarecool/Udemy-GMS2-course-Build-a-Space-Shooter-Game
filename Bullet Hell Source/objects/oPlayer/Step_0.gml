@@ -57,13 +57,27 @@ if ( difV == 0 && difH == 0) {
 }
 
 if isMoving {
-
-	x += lengthdir_x(shipSpeed, dir);
-	y += lengthdir_y(shipSpeed, dir);
-
+	
+	if ( abs(vX + lengthdir_x(acceleration, dir )) <= maxVelocity) {
+		vX += lengthdir_x(acceleration, dir);
+	}
+	if ( abs(vY + lengthdir_y(acceleration, dir)) <= maxVelocity ) {
+		vY += lengthdir_y(acceleration, dir);
+	}
+} else {
+	// when "isMoving" is false
+	// since drag is defined as less than 1 (0.9) this will "slowdown"
+	// the ship x and y speed will slowly count down to 0 the longer
+	// no keys are being pressed
+	
+	vX *= drag;
+	vY *= drag;
+	
+	
 }
 
-
+x += vX;
+y += vY;
 
 
 
