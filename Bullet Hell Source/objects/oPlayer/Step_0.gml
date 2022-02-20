@@ -76,10 +76,15 @@ if isMoving {
 	
 }
 
+// ship movement
+prevX = x;
+prevY = y;
+
+
 x += vX;
 y += vY;
 
-
+// previous x and y
 
 
 // this is end of "movement 2"

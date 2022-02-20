@@ -2,6 +2,7 @@
   "resources": [
     {"id":{"name":"sBullet","path":"sprites/sBullet/sBullet.yy",},"order":2,},
     {"id":{"name":"soundMenuMusic","path":"sounds/soundMenuMusic/soundMenuMusic.yy",},"order":2,},
+    {"id":{"name":"screenBounce","path":"scripts/screenBounce/screenBounce.yy",},"order":0,},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":0,},
     {"id":{"name":"soundBossMusic","path":"sounds/soundBossMusic/soundBossMusic.yy",},"order":1,},
     {"id":{"name":"soundEnemyBullet","path":"sounds/soundEnemyBullet/soundEnemyBullet.yy",},"order":3,},
