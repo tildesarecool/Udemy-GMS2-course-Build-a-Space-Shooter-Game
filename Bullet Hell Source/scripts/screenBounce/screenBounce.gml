@@ -27,5 +27,4 @@ function screenBounce(argument0) {
 		y = prevY;		
 		vY = -vY * damper;
 	}
-	
 }

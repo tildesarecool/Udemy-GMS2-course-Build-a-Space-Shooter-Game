@@ -17,7 +17,7 @@ if keyboard_check_direct(ord("S")) {
 	goDown = 0;
 }
 
-if keyboard_check_direct(ord("D")) {
+if keyboard_check_direct(ord("D") ) {
 	// shipSpeed defined in create
 	// x += shipSpeed; //original
 	goRight = 1;
@@ -72,8 +72,6 @@ if isMoving {
 	
 	vX *= drag;
 	vY *= drag;
-	
-	
 }
 
 // ship movement
