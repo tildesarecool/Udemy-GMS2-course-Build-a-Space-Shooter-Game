@@ -1,1 +1,3 @@
-armor = 100;
+event_inherited();
+
+armor = 1;

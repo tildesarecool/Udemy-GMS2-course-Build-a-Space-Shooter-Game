@@ -26,4 +26,11 @@ if ringSpawn{
 	ringSpawn = false;
 	
 }
+
+
+if ( deathEffect )  {
 	
+	part_particles_create(deathSystem, exX, exY, explosion, 5);
+	deathEffect = false; 
+	
+}

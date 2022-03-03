@@ -1,6 +1,7 @@
 #region fullscreen
 idealHeight = 768; //this is the dimension that we keep constant
-aspectRatio = display_get_width()/display_get_height(); //the aspect ratio of the device playing the game
+//aspectRatio = display_get_width()/display_get_height(); //the aspect ratio of the device playing the game
+aspectRatio = 1920/1080;
 idealWidth = round(aspectRatio*idealHeight); //calculating the width that gives the correct ratio
 
 //view settings
@@ -26,7 +27,7 @@ global.cameraY = camera_get_view_y(global.camera);
 view_set_camera(targetView, global.camera);
 
 //run in fullscreen
-window_set_fullscreen(true);
+window_set_fullscreen(false);
 
 #endregion
 
@@ -64,12 +65,30 @@ part_type_blend(bulletRing,1);
 part_type_life(bulletRing,5,10);
 part_type_size(bulletRing,1,3,0,0);
 part_type_orientation(bulletRing,0,365,0,0,0);
+exX = 0;
+exY = 0;
 
 ringSpawn = false;
 ringX = 0;
 ringY = 0;
 
 cloudNumber = 10;
+
+deathEffect = false;
+deathSystem = part_system_create();
+explosion = part_type_create();
+part_type_alpha3(explosion,.2,.3,.2);
+part_type_shape(explosion, pt_shape_explosion);
+part_type_color2(explosion,c_white, c_yellow);
+part_type_blend(explosion,1);
+part_type_life(explosion,0,100);
+part_type_size(explosion,1,10,-0.1,0);
+part_type_orientation(explosion,0,365,0,0,0);
+part_type_direction(explosion, 0, 360, 0, 0);
+part_type_speed(explosion, 3, 10, 0, 0);
+exX = 0;
+exY = 0;
+
 
 for (i=0; i<starNumber; i+=1){
 	

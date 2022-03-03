@@ -19,6 +19,7 @@ if inst != noone{
 	with(inst){ //whoever it collides with gets armor reduced
 		
 		armor -= 1;
+		wasHit = true;
 		
 	}
 	oGUI.ringSpawn = true;//spawning the collision particles

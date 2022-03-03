@@ -1,6 +1,7 @@
 {
   "resources": [
     {"id":{"name":"sBullet","path":"sprites/sBullet/sBullet.yy",},"order":5,},
+    {"id":{"name":"oDeath","path":"objects/oDeath/oDeath.yy",},"order":4,},
     {"id":{"name":"sBackground","path":"sprites/sBackground/sBackground.yy",},"order":3,},
     {"id":{"name":"soundExplosion","path":"sounds/soundExplosion/soundExplosion.yy",},"order":8,},
     {"id":{"name":"resizeCenter","path":"scripts/resizeCenter/resizeCenter.yy",},"order":1,},
