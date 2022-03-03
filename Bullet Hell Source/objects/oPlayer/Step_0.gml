@@ -1,158 +1,99 @@
-/// @description Insert description here
-// You can write your code in this editor
+//This is to find the direction the player is trying to move
+if keyboard_check_direct(ord("W")){
 
-if keyboard_check_direct(ord("W")) {
-	// shipSpeed defined in create
-	// y -= shipSpeed; //original
 	goUp = -1;
+
 } else {
+	
 	goUp = 0;
+	
 }
-
-if keyboard_check_direct(ord("S")) {
-	// shipSpeed defined in create
-	//	y += shipSpeed; //original
+if keyboard_check_direct(ord("S")){
+	
 	goDown = 1;
+
 } else {
+	
 	goDown = 0;
+	
 }
-
-if keyboard_check_direct(ord("D") ) {
-	// shipSpeed defined in create
-	// x += shipSpeed; //original
+if keyboard_check_direct(ord("D")){
+	
 	goRight = 1;
+
 } else {
+	
 	goRight = 0;
+	
 }
-
-if keyboard_check_direct(ord("A")) {
-	// shipSpeed defined in create
-	// x -= shipSpeed; //original
+if keyboard_check_direct(ord("A")){
+	
 	goLeft = -1;
+
 } else {
+	
 	goLeft = 0;
+	
 }
 
+//here we combine the data into a coordinate
 difV = goUp + goDown;
 difH = goRight + goLeft;
-
-// use above variables to get an angle
-// point direction documetnation
-// https://manual-en.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FMaths_And_Numbers%2FAngles_And_Distance%2Fpoint_direction.htm&rhsearch=point_direction&rhhlterm=point_direction
-// start x and y coords and end x and y coords
-// 0,0 being the current x/y of the this ship object (right?) and difH/difV being the angle of the 
-// ship
-dir = point_direction( 0, 0, difH, difV );
-
-
-// more informaiton on lengthdir
-// https://manual-en.yoyogames.com/#t=GameMaker_Language%2FGML_Reference%2FMaths_And_Numbers%2FAngles_And_Distance%2Flengthdir_x.htm&rhsearch=lengthdir_&rhhlterm=lengthdir_
-// the below gets replaced anyway
-
-if ( difV == 0 && difH == 0) {
-	isMoving = false;
-} else {
-
-	isMoving = true
-}
-
-if isMoving {
+//here we find the direction from an origin point to our coordinate
+dir = point_direction(0,0,difH, difV);
+//This is to track if we should be moving
+if (difV == 0 && difH == 0){
 	
-	if ( abs(vX + lengthdir_x(acceleration, dir )) <= maxVelocity) {
-		vX += lengthdir_x(acceleration, dir);
-	}
-	if ( abs(vY + lengthdir_y(acceleration, dir)) <= maxVelocity ) {
-		vY += lengthdir_y(acceleration, dir);
-	}
+	isMoving = false;
+	
 } else {
-	// when "isMoving" is false
-	// since drag is defined as less than 1 (0.9) this will "slowdown"
-	// the ship x and y speed will slowly count down to 0 the longer
-	// no keys are being pressed
+	
+	isMoving = true;
+	
+}
+//if we should be moving we change the velocity by adding our acceleration
+if isMoving{
+	if (abs(vX + lengthdir_x(acceleration,dir)) <= maxVelocity){ // this keeps our acceleration below the max
+		vX = vX + lengthdir_x(acceleration,dir);
+	}
+	if (abs(vY + lengthdir_y(acceleration,dir)) <= maxVelocity){
+		vY = vY + lengthdir_y(acceleration,dir);
+	}
+} else { // here we slow the ship if the player is not pressing a key
 	
 	vX *= drag;
 	vY *= drag;
+	
 }
 
-// ship movement
+//here we store the previous values of x and y incase they leave the room
 prevX = x;
 prevY = y;
 
-
+//this is where we move the ship
 x += vX;
 y += vY;
 
-// previous x and y
+//update trail
+//puts start of trail to current position
+trail[0,0] = x - 32;
+trail[0,1] = y;
 
-
-// this is end of "movement 2"
-/***********************
-if ( difV == 0 && difH == 0) {
-	isMoving = false;
-} else {
-
-	isMoving = true
+for(var i = 1; i <= trailPoints; i++){ //loops through trail
+	//this makes each coordinate approach the value of the last coordinate for smooth movement (lerping)
+	trail[i,0] = trail[i-1,0] + (trail[i,0] -pointSpacing - trail[i-1,0])*moveAmount;
+	trail[i,1] = trail[i-1,1] + (trail[i,1] - trail[i-1,1])*moveAmount;
 }
 
-if isMoving {
-
-	x += lengthdir_x(shipSpeed, dir);
-	y += lengthdir_y(shipSpeed, dir);
-
-}
-
-***********************/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/****************
-if isMoving {
-	
-	if ( vX + lengthdir_x(acceleration,dir) <= maxVelocity ) {
-		vX += lengthdir_x(acceleration,dir);
-	}
-	if ( vY + 
-	lengthdir_y(acceleration, dir) ) {
-		vY += lengthdir_y(acceleration,dir);
+//shooting
+if (keyboard_check_direct(ord("J"))){
+	bulletVal += 1;
+	if (bulletVal >= coolDown){
+		vX -= knockback; //pushing the ship back from the force of the bullet
+		xPos = x + lengthdir_x(60,image_angle);//adjusting the spawn location of the bullet
+		yPos = y + lengthdir_y(60,image_angle);
+		instance_create_depth(xPos, yPos,1,oBullet);
+		bulletVal = 0;
 	}
 	
 }
-****************/
-
-
-
-//point_direction()
-/*
-  if (keyboard_check_direct((ord("w") ) ) ) { 
-	goUp = 1;
-	//	if (goUp == 1) {
-		//show_message( string(goUp) );
-	} else if (keyboard_check_released( ord("w") ) ) {
-		
-	goUp = 0;
-	show_message( string(goUp) );
-	//show_message( string(goUp) );
-	//goUp = 1;
-	//	if (goUp == 1) {
-	//	show_message( string(goUp) );
-	//}
-}
-*/

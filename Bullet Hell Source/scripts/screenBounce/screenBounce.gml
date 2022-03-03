@@ -1,30 +1,23 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-// section 3/room boundries video
-/// @function screenBounce ( damper );
-/// @param { real  }
-
-
-// called if the "after step" event
-function screenBounce(argument0) {
-	// sprite origin is at middle/center
+// This script restricts the player to the screen and bounces
+// them off when they run into the border
+function screenBounce(bounceVal){ //I changed this to bounceval but it doesnt matter what you call it
+	// here we calculate the half widths and half heights of the objects sprite
+	var halfWidth = sprite_get_width(sprite_index)/2;
+	var halfHeight = sprite_get_height(sprite_index)/2;
+	// this value decreases the bounce each time
+	var damper = bounceVal;
 	
-	//show_message("Successfuly called the function.");
+	if (x>global.cameraWidth + global.cameraX - halfWidth || x < global.cameraX + halfWidth){ // checking if out of the room
+		
+		x = prevX; //moving back if out of the room
+		vX = -vX*damper; //adding the bounce
 	
-	var halfWidth = sprite_get_width(sprite_index) / 2;
-	var halfHeight = sprite_get_height(sprite_index) / 2;
-	var damper = argument0;
-	
-	if (x > room_width - halfWidth || x < 0 + halfWidth ) { // offsetting half of spritewidth
-		x = prevX;		
-		// the "bounce of the edge" section
-		// try 1.5 instead damper for hilarirty to ensue
-		vX = -vX * damper ;
-		//show_message("made it to x = prevx.");
 	}
 	
-	if (y > room_height - halfHeight || y < 0 + halfHeight ) { // offsetting half of spritewidth
-		y = prevY;		
-		vY = -vY * damper;
+	if (y>global.cameraY + global.cameraHeight - halfHeight || y < global.cameraY + halfHeight){
+		
+		y = prevY;
+		vY = -vY*damper;
+	
 	}
 }
